@@ -1,21 +1,56 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import HomeScreen from './source/HomeScreen';
+import Drawing from './source/Lab2';
+import Movie from './source/Lab3';
+import {NavigationContainer} from '@react-navigation/native';
+import { AntDesign } from '@expo/vector-icons'; 
 
-export default function App() {
+const Tab = createBottomTabNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    
+    <NavigationContainer >
+      <Tab.Navigator 
+        screenOptions={({ route }) => ({
+          tabBarIcon: () => {
+            let myIcon;
+            if (route.name == "Home") {
+              myIcon = "home";
+            }
+            else if (route.name == "Lab2"){
+              myIcon = "edit";
+            }
+            else if (route.name == "Lab3"){
+              myIcon = "playcircleo";
+            }
+            return <AntDesign name={myIcon} size={24} color="black" />
+          }
+        })}  
+      >
+        
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Lab2" component={Drawing} />
+        <Tab.Screen name="Lab3" component={Movie} />
+      </Tab.Navigator>
+    </NavigationContainer>
+    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  backy: {
+    color: 'black',
+}
 });
+
+export default App;
