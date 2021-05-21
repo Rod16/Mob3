@@ -6,6 +6,7 @@ import HomeScreen from './source/HomeScreen';
 import Drawing from './source/Lab2';
 import Lab4 from './source/Lab4'
 import Lab5 from './source/Lab5'
+import Lab6 from './source/Lab6'
 import {NavigationContainer} from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons'; 
 
@@ -31,6 +32,9 @@ function App() {
             else if (route.name == "Lab5"){
               myIcon = "picture";
             }
+            else if (route.name == "Lab6"){
+              myIcon = "videocamera";
+            }
             return <AntDesign name={myIcon} size={24} color="black" />
           }
         })}  
@@ -40,6 +44,7 @@ function App() {
         <Tab.Screen name="Lab2" component={Drawing} />
         <Tab.Screen name="Lab4" component={Lab4} />
         <Tab.Screen name="Lab5" component={Lab5} />
+        <Tab.Screen name="Lab6" component={Lab6} />
       </Tab.Navigator>
     </NavigationContainer>
     
